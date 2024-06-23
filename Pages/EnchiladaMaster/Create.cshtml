@@ -1,0 +1,47 @@
+﻿@page
+@model Paginas_Enchiladas.Pages.EnchiladaMaster.CreateModel
+@{
+    ViewData["Title"] = "Agregar"; //Titulo de la pagina
+}
+<h1>Agregar Enchilada</h1> <!--Encabezado de la pagina--> 
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post"><!-- Formulario para agregar una nueva enchilada -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div><!-- Resumen de validación para mostrar errores -->
+            <!--Campos para agregar la informacion de la enchilada-->
+            <div class="form-group">
+                <label asp-for="Enchilada.Tipo_tortilla" class="control-label"></label>
+                <input asp-for="Enchilada.Tipo_tortilla" class="form-control" />
+                <span asp-validation-for="Enchilada.Tipo_tortilla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Enchilada.Relleno" class="control-label"></label>
+                <input asp-for="Enchilada.Relleno" class="form-control" />
+                <span asp-validation-for="Enchilada.Relleno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Enchilada.Salsa" class="control-label"></label>
+                <input asp-for="Enchilada.Salsa" class="form-control" />
+                <span asp-validation-for="Enchilada.Salsa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Enchilada.Precio" class="control-label"></label>
+                <input asp-for="Enchilada.Precio" class="form-control" />
+                <span asp-validation-for="Enchilada.Precio" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group mt-2"> <!--Botones para confirmar agregar la enchilada o para volver al menu-->
+                <input type="submit" value="Agregar" class="btn btn-primary" />
+
+                &nbsp;&nbsp;<a asp-page="./Index" class="btn btn-success">Volver al Menu</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--Scripts para la validacion del ingreso del registro de enchilada-->
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

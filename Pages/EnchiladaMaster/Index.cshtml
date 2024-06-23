@@ -1,0 +1,70 @@
+﻿@page
+@model Paginas_Enchiladas.Pages.EnchiladaMaster.IndexModel
+@{
+    ViewData["Title"] = "Inicio"; //Establece el titulo de la pagina
+}
+<h3>Inicio</h3> <!-- Encabezado de la pagina -->
+<hr />
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <!-- Se definene las cabeceras de la tablas usando los nombres de los campos del modelo de la tabla -->
+            <th>
+                @Html.DisplayNameFor(model => model.Enchilada[0].Tipo_tortilla)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enchilada[0].Relleno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enchilada[0].Salsa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enchilada[0].Precio)
+            </th>
+
+            <th>Operaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Verifica que haya enchiladas registradas en la tabla -->
+        @if(Model.Enchilada != null && Model.Enchilada.Any())
+        {
+            @foreach (var item in Model.Enchilada)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo_tortilla)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Relleno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salsa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Precio)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.id_Enchilada" class="btn btn-primary">Actualizar</a> |
+                        <a asp-page="./Details" asp-route-id="@item.id_Enchilada" class="btn btn-warning">Consultar</a>
+                        |
+                        <a asp-page="./Delete" asp-route-id="@item.id_Enchilada" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        }<!-- En caso de no tener enchiladas registradas se muestra mensaje  de que no hay -->
+        else   
+        {
+            <tr>
+                <td colspan="5" class="text-center">
+                    Enchiladas no registradas en la base de datos.
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table> <!-- Boton para agregar enchiladas  -->
+<p class="text-lg-end">
+    <a asp-page="Create" class="btn btn-success">Agregar Enchilada</a>
+</p>

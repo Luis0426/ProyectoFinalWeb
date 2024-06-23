@@ -1,0 +1,49 @@
+﻿@page
+@model Paginas_Enchiladas.Pages.EnchiladaMaster.DeleteModel //Modelo para la pagina de eliminar
+@{
+    ViewData["Title"] = "Eliminar"; //Titulo de la pagina
+}
+<h3>Eliminar Enchilada</h3>  <!-- Encabezado de la pagina -->
+<hr />
+<h4>¿Estas seguro de eliminar la enchilada?</h4><!-- Mensaje de confirmación para el usuario -->
+<br />
+<div>
+    
+    
+    <dl class="row">
+        <!-- Apartado donde se muestra la informacion de la enchilada que se va a eliminar -->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enchilada.Tipo_tortilla)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Enchilada.Tipo_tortilla)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enchilada.Relleno)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Enchilada.Relleno)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enchilada.Salsa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Enchilada.Salsa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enchilada.Precio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Enchilada.Precio)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        
+        <div class="mt-2">
+            <input type="hidden" asp-for="Enchilada.id_Enchilada" /> <!-- Campo de ID oculto -->
+            <input type="submit" value="Borrar" class="btn btn-danger" /><!-- Boton para ejecutar el metodo para eliminar la enchilada --> |
+            <a asp-page="./Index" class="btn btn-success">Volver al Menu</a><!-- Boton para volver al inicio -->
+        </div>
+    </form>
+</div>
